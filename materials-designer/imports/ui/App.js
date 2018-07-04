@@ -2,11 +2,21 @@ import React, { Component } from 'react';
 import Toolbar from './Toolbar.js';
 import File from './File.js';
 import FileSelector from './FileSelector.js';
+import { withTracker } from 'meteor/react-meteor-data';
+import { Atoms } from '../api/atoms.js';
+import Atom from './Atom.js';
 
 // App component - represents the whole app
-export default class App extends Component {
+ class App extends Component {
+   constructor(props) {
+     super(props);
+   }
 
-
+   renderAtoms() {
+     return this.props.atoms.map( (atom, id) => (
+       <li key={id}><Atom atom={atom} /></li>
+     ));
+   }
 
   render() {
     return (
@@ -19,6 +29,7 @@ export default class App extends Component {
             <Toolbar />
             <section className="file-area">
               <FileSelector />
+              <ul>{this.renderAtoms()}</ul>
             </section>
             <section className="model-area"></section>
           </section>
@@ -27,3 +38,9 @@ export default class App extends Component {
     );
   }
 }
+
+export default withTracker(() => {
+  return {
+    atoms: Atoms.find({}).fetch(),
+  };
+})(App);
