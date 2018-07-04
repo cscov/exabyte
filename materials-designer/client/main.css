@@ -79,11 +79,32 @@ input[type="submit"] {
 
   .file-area {
     background-color: #011e4c;
-    height: 100vh;
+    position: fixed;
+    top: 27%;
+    height: 100%;
     width: 50vw;
   }
   .model-area {
     background-color: #333333;
-    height: 100vh;
+    position: fixed;
+    left: 50%;
+    top: 27%;
+    height: 100%;
     width: 50vw;
   }
+
+  select {
+    width: 90%;
+    margin-left: 1%;
+    height: 2em;
+    color: #2D4988;
+    font-size: medium;
+    background-color: #EFE9F4;
+    border: 2px solid #2D4988;
+    margin-top: 1em;
+  }
+
+  /* orange #EE6352 */
+  /* sky blue #08B2E3 */
+  /* off-white #EFE9F4 */
+  /* green #57A773 */

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Toolbar from './Toolbar.js';
 import File from './File.js';
+import FileSelector from './FileSelector.js';
 
 // App component - represents the whole app
 export default class App extends Component {
@@ -16,7 +17,9 @@ export default class App extends Component {
           </header>
           <section className="content">
             <Toolbar />
-            <section className="file-area"></section>
+            <section className="file-area">
+              <FileSelector />
+            </section>
             <section className="model-area"></section>
           </section>
         </section>
