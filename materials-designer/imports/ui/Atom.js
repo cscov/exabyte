@@ -72,26 +72,26 @@ class Atom extends React.Component {
     });
 
     return (
-    <section>
+    <section className="atoms">
       <li>
-        <input type="text" value={atom.comment} onChange={this.handleInputChange}/>
+        <input  className="text" type="text" value={atom.comment} onChange={this.handleInputChange}/>
       </li>
       <li>
-        <input type="text" value={atom.latticeConstant} onChange={this.handleInputChange}/>
+        <input className="constant" type="text" value={atom.latticeConstant} onChange={this.handleInputChange}/>
       </li>
-      <ul className="array">{firstLatticeVector}</ul>
-      <ul className="array">{secondLatticeVector}</ul>
-      <ul className="array">{thirdLatticeVector}</ul>
-      <ul className="array">{atomSpecies}</ul>
-      <li>{selectiveDynamics}</li>
+      <ul className="array vector">{firstLatticeVector}</ul>
+      <ul className="array vector">{secondLatticeVector}</ul>
+      <ul className="array vector">{thirdLatticeVector}</ul>
+      <ul className="array constant">{atomSpecies}</ul>
+      <li className="text" >{selectiveDynamics}</li>
       <li>
-        <input type="text" value={atom.latticeType} onChange={this.handleInputChange}/>
+        <input className="text" type="text" value={atom.latticeType} onChange={this.handleInputChange}/>
       </li>
-      <ul className="array">{atomCoordinates1}</ul>
-      <ul className="array">{atomCoordinates2}</ul>
-      <li>{atom.latticeType2}</li>
-      <ul className="array">{atomCoordinates3}</ul>
-      <ul className="array">{atomCoordinates4}</ul>
+      <ul className="array coords">{atomCoordinates1}</ul>
+      <ul className="array coords">{atomCoordinates2}</ul>
+      <li className="text" >{atom.latticeType2}</li>
+      <ul className="array coords">{atomCoordinates3}</ul>
+      <ul className="array coords">{atomCoordinates4}</ul>
     </section>);
   }
 }

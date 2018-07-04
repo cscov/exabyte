@@ -104,6 +104,40 @@ input[type="submit"] {
     margin-top: 1em;
   }
 
+  .atoms {
+    margin: 1em;
+  }
+
+  .array {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  .atoms > li, ul {
+    font-size: 14px;
+    line-height: 2em;
+  }
+
+  .text {
+    color: #EFE9F4;
+  }
+
+  .constant {
+    color: #EE6352;
+  }
+
+  .vector {
+    color: #08B2E3;
+  }
+
+  .coords {
+    color: #57A773;
+  }
+
   /* orange #EE6352 */
   /* sky blue #08B2E3 */
   /* off-white #EFE9F4 */
