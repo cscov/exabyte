@@ -42,20 +42,39 @@ button {
 button,
 input[type="submit"] {
   cursor: pointer;
-  background: #FF5A5F;
+  background: #2D4988;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 1px;
   color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   /*  styling  */
   h1 {
     margin: 1em;
   }
-  
+
   .content {
     display: flex;
     justify-content: space-between;
+  }
+
+  .toolbar {
+    position: absolute;
+    background-color: #ffffff;
+    width: 100%;
+    padding: 2em 0 1em 2em;
+    line-height: 5px;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid #eeeeee;
+    box-sizing: border-box;
+    align-items: center;
+  }
+
+  .right-toolbar {
+    margin-right: 2em;
+
   }
 
   .file-area {
