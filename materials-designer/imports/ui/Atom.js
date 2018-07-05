@@ -1,97 +1,70 @@
 import React from 'react';
+import { Atoms } from '../api/atoms.js';
 
 class Atom extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      comment: this.props.atom.comment,
-      latticeConstant:  this.props.atom.latticeConstant,
-      firstLatticeVector: this.props.atom.firstLatticeVector,
-      secondLatticeVector: this.props.atom.secondLatticeVector,
-      thirdLatticeVector: this.props.atom.thirdLatticeVector,
-      atomSpecies: this.props.atom.atomsPerSpecies,
-      latticeType: this.props.atom.latticeType,
-      atomCoordinates1: this.props.atom.atomCoordinates1,
-      atomCoordinates2: this.props.atom.atomCoordinates2,
-      latticeType2: this.props.atom.latticeType2,
-      atomCoordinates3: this.props.atom.atomCoordinates3,
-      atomCoordinates4: this.props.atom.atomCoordinates4,
-    };
 
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   handleInputChange(property) {
-    return e => this.setState({ [property]: e.target.value });
+    return e => Atoms.update(this.props.atom._id, {
+      $set: { [property]: e.target.value }
+    });
   }
 
   render() {
     const { atom } = this.props;
-    let atomSpecies = atom.atomsPerSpecies.map( (species, idx) => {
-      return (<li key={`species-${idx}`}>
-          <input type="text" value={species} onChange={this.handleInputChange}/>
-        </li>);
-    });
-    let firstLatticeVector = atom.firstLatticeVector.map( (vector, idx) => {
-      return (<li key={`flv-${idx}`}>
-          <input type="text" value={vector} onChange={this.handleInputChange}/>
-        </li>);
-    });
-    let secondLatticeVector = atom.secondLatticeVector.map( (vector, idx) => {
-      return (<li key={`fsv-${idx}`}>
-          <input type="text" value={vector} onChange={this.handleInputChange}/>
-        </li>);
-    });
-    let thirdLatticeVector = atom.thirdLatticeVector.map( (vector, idx) => {
-      return (<li key={`ftv-${idx}`}>
-          <input type="text" value={vector} onChange={this.handleInputChange}/>
-        </li>);
-    });
+    console.log(atom);
 
     let selectiveDynamics = atom.selectiveDynamics ? "Selective Dynamics" : "";
-    let atomCoordinates1 = atom.atomCoordinates1.map((coords, idx) => {
-      return (<li key={`ac1-${idx}`}>
-          <input type="text" value={coords} onChange={this.handleInputChange}/>
-        </li>);
-    });
-    let atomCoordinates2 = atom.atomCoordinates2.map((coords, idx) => {
-      return (<li key={`ac2-${idx}`}>
-          <input type="text" value={coords} onChange={this.handleInputChange}/>
-        </li>);
-    });
-    let atomCoordinates3 = atom.atomCoordinates3.map((coords, idx) => {
-      return (<li key={`ac3-${idx}`}>
-          <input type="text" value={coords} onChange={this.handleInputChange}/>
-        </li>);
-    });
-    let atomCoordinates4 = atom.atomCoordinates4.map((coords, idx) => {
-      return (<li key={`ac4-${idx}`}>
-          <input type="text" value={coords} onChange={this.handleInputChange}/>
-        </li>);
-    });
 
     return (
     <section className="atoms">
       <li>
-        <input  className="text" type="text" value={atom.comment} onChange={this.handleInputChange}/>
+        <input  className="text" type="text" value={atom.comment} onChange={this.handleInputChange('comment')}/>
       </li>
       <li>
-        <input className="constant" type="text" value={atom.latticeConstant} onChange={this.handleInputChange}/>
+        <input className="constant" type="text" value={atom.latticeConstant} onChange={this.handleInputChange('latticeConstant')}/>
       </li>
-      <ul className="array vector">{firstLatticeVector}</ul>
-      <ul className="array vector">{secondLatticeVector}</ul>
-      <ul className="array vector">{thirdLatticeVector}</ul>
-      <ul className="array constant">{atomSpecies}</ul>
+      <li className="array vector"><input type="text" value={atom.firstVector0} onChange={this.handleInputChange('firstVector0')}/></li>
+      <li className="array vector"><input type="text" value={atom.firstVector1} onChange={this.handleInputChange('firstVector1')}/></li>
+      <li className="array vector"><input type="text" value={atom.firstVector2} onChange={this.handleInputChange('firstVector2')}/></li>
+      <li className="array vector"><input type="text" value={atom.secondVector0} onChange={this.handleInputChange('secondVector0')}/></li>
+      <li className="array vector"><input type="text" value={atom.secondVector1} onChange={this.handleInputChange('secondVector1')}/></li>
+      <li className="array vector"><input type="text" value={atom.secondVector2} onChange={this.handleInputChange('secondVector2')}/></li>
+      <li className="array vector"><input type="text" value={atom.thirdVector0} onChange={this.handleInputChange('thirdVector0')}/></li>
+      <li className="array vector"><input type="text" value={atom.thirdVector1} onChange={this.handleInputChange('thirdVector1')}/></li>
+      <li className="array vector"><input type="text" value={atom.thirdVector2} onChange={this.handleInputChange('thirdVector2')}/></li>
+      <li className="array constant"><input type="text" value={atom.atomSpecies0} onChange={this.handleInputChange('atomSpecies0')}/></li>
+      <li className="array constant"><input type="text" value={atom.atomSpecies1} onChange={this.handleInputChange('atomSpecies1')}/></li>
       <li className="text" >{selectiveDynamics}</li>
       <li>
-        <input className="text" type="text" value={atom.latticeType} onChange={this.handleInputChange}/>
+        <input className="text" type="text" value={atom.latticeType} onChange={this.handleInputChange('latticeType')}/>
       </li>
-      <ul className="array coords">{atomCoordinates1}</ul>
-      <ul className="array coords">{atomCoordinates2}</ul>
-      <li className="text" >{atom.latticeType2}</li>
-      <ul className="array coords">{atomCoordinates3}</ul>
-      <ul className="array coords">{atomCoordinates4}</ul>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord10} onChange={this.handleInputChange('atomCoord10')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord11} onChange={this.handleInputChange('atomCoord11')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord12} onChange={this.handleInputChange('atomCoord12')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord13} onChange={this.handleInputChange('atomCoord13')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord14} onChange={this.handleInputChange('atomCoord14')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord15} onChange={this.handleInputChange('atomCoord15')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord20} onChange={this.handleInputChange('atomCoord20')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord21} onChange={this.handleInputChange('atomCoord21')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord22} onChange={this.handleInputChange('atomCoord22')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord23} onChange={this.handleInputChange('atomCoord23')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord24} onChange={this.handleInputChange('atomCoord24')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord25} onChange={this.handleInputChange('atomCoord25')}/></li>
+      <li>
+        <input className="text" type="text" value={atom.latticeType2} onChange={this.handleInputChange('latticeType2')} />
+      </li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord30} onChange={this.handleInputChange('atomCoord30')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord31} onChange={this.handleInputChange('atomCoord31')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord32} onChange={this.handleInputChange('atomCoord32')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord40} onChange={this.handleInputChange('atomCoord40')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord41} onChange={this.handleInputChange('atomCoord41')}/></li>
+      <li className="array coords"><input className="text" type="text" value={atom.atomCoord42} onChange={this.handleInputChange('atomCoord42')}/></li>
     </section>);
   }
 }
