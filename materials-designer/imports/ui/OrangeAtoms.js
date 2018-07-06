@@ -7,11 +7,11 @@ class OrangeAtoms extends React.Component {
     super(props);
   }
 
-  randomizePosition(stage) {
+  randomizePosition() {
     const pos = [];
-    let x = Math.floor(Math.random() * Math.floor(this.props.stage.width));
+    let x = Math.floor(Math.random() * 390);
     pos.push(x);
-    let y = Math.floor(Math.random() * Math.floor(this.props.stage.height));
+    let y = Math.floor(Math.random() * 500);
     pos.push(y);
     return pos;
   }
@@ -30,7 +30,7 @@ class OrangeAtoms extends React.Component {
           fill="#EE6352"/>
        );
     }
-    return group;
+    return (<section>{group}</section>);
   }
 }
 

@@ -9,7 +9,8 @@ export default class Model extends Component {
     this.state = { colors: ['#EE6352', '#08B2E3', '#57A773'] };
     this.draw = this.draw.bind(this);
     this.stageRef = React.createRef();
-    debugger
+    this.state = { stage: this.stageRef.current };
+    // debugger
   }
 
   componentDidMount() {
@@ -42,11 +43,10 @@ export default class Model extends Component {
   }
 
   render() {
-    const stage = this.refs.stage.getStage();
     return (
-      <Stage ref={this.stageRef} width="390" height="500">
+      <Stage ref="stage" width="390" height="500">
         <Layer>
-          <OrangeAtoms stage={stage}/>
+          <OrangeAtoms stage={this.state.stage}/>
         </Layer>
       </ Stage>
     );
