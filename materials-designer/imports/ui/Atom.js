@@ -17,7 +17,6 @@ class Atom extends React.Component {
 
   render() {
     const { atom } = this.props;
-    console.log(atom);
 
     let selectiveDynamics = atom.selectiveDynamics ? "Selective Dynamics" : "";
 

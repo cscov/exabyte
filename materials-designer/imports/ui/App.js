@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Toolbar from './Toolbar.js';
-import File from './File.js';
+import Model from './Model.js';
 import FileSelector from './FileSelector.js';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Atoms } from '../api/atoms.js';
@@ -31,7 +31,9 @@ import Atom from './Atom.js';
               <FileSelector />
               <ul>{this.renderAtoms()}</ul>
             </section>
-            <section className="model-area"></section>
+            <section className="model-area">
+              <Model />
+            </section>
           </section>
         </section>
       </React.Fragment>
