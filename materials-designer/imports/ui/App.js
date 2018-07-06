@@ -31,7 +31,9 @@ import Atom from './Atom.js';
               <FileSelector />
               <ul>{this.renderAtoms()}</ul>
             </section>
-            <section className="model-area"></section>
+            <section className="model-area">
+              <Model />
+            </section>
           </section>
         </section>
       </React.Fragment>
