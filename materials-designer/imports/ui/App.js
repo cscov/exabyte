@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Toolbar from './Toolbar.js';
-import File from './File.js';
+import Model from './Model.js';
 import FileSelector from './FileSelector.js';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Atoms } from '../api/atoms.js';
